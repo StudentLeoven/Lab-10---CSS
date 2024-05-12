@@ -1,14 +1,47 @@
-<p style="color: green"><%= notice %></p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Subject Index</title>
+  <%= stylesheet_link_tag 'main' %> 
+</head>
+<body>
 
-<h1>Subjects</h1>
+  <p style="color: green"><%= notice %></p>
+<div class="main-container">
 
-<div id="subjects">
-  <% @subjects.each do |subject| %>
-    <%= render subject %>
-    <p>
-      <%= link_to "Show this subject", subject %>
-    </p>
-  <% end %>
+  <div class="main-header">
+    <%= image_tag("adnu-seal.png") %>
+  </div>
+  
+  <h1>List of Subjects</h1>
+
+  <div id="subjects">
+    <table>
+      <thead class="header" >
+        <th>Name</th>
+        <th>Section</th>
+        <th>Number of Units</th>
+        <th>Number of Students</th>
+        <th>Per Unit Rate</th>
+      </thead>
+      <tbody>
+        <% @subjects.each do |subject| %>
+          <tr>
+            <td><%= link_to subject.name, subject %></td>
+            <td><%= subject.section%></td>
+            <td><%= subject.number_of_units%></td>
+            <td><%= subject.number_of_students%></td>
+            <td><%= subject.per_unit_rate%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <%= link_to "New Subject", new_subject_path, class: "buttons" %>
 </div>
 
-<%= link_to "New subject", new_subject_path %>
+
+</body>
+</html>
+

@@ -1,27 +1,45 @@
-<p style="color: green"><%= notice %></p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Subject Page</title>
+  <%= stylesheet_link_tag 'main' %> 
+</head>
+<body>
 
-<%= render @subject %>
-<h2>List of Students</h2>
-<table>
-  <thead>
-    <td>Student Name</td>
-    <td>Year Level</td>
-    <td>Number of Units</td>
-  </thead>
-  <tbody>
-    <% @subject.courses.each do |course| %>
-      <tr>
-        <td><%=course.student.name=%></td>
-        <td><%=course.student.year_level=%></td>
-        <td><%=course.student.number_of_units%></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <p style="color: green"><%= notice %></p>
+<div class="main-container">
 
-<div>
-  <%= link_to "Edit this subject", edit_subject_path(@subject) %> |
-  <%= link_to "Back to subjects", subjects_path %>
+  <div class="main-header">
+    <%= image_tag("adnu-seal.png") %>
+  </div>
 
-  <%= button_to "Destroy this subject", @subject, method: :delete %>
+  <% if @subject.courses.present? %>
+    <h2>List of Students</h2>
+    <table >
+      <thead class="header" >
+        <th>Student Name</th>
+        <th>Year Level</th>
+        <th>Number of Units</th>
+      </thead> 
+      <tbody>
+        <% @subject.courses.each do |course|%>
+          <tr>
+            <td><%=course.student.name%></td>
+            <td><%=course.student.year_level%></td>
+            <td><%=course.student.number_of_units%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+<div style = "text-align: center">
+  <%= link_to "Edit this subject", edit_subject_path(@subject), class: "buttons" %> |
+  <%= link_to "Back to subjects", subjects_path, class: "buttons" %>
+
+  <%= button_to "Destroy this subject", @subject, method: :delete , class: "buttons"%>
 </div>
+
+
+</body>
+</html>
