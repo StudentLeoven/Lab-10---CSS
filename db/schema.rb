@@ -34,10 +34,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_02_004653) do
     t.string "name"
     t.string "section"
     t.integer "number_of_units", default: 0
-    t.integer "number_of_students"
     t.float "per_unit_rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "number_of_students"
   end
 
   add_foreign_key "courses", "students"

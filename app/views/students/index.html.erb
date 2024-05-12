@@ -1,14 +1,46 @@
-<p style="color: green"><%= notice %></p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Index</title>
+  <%= stylesheet_link_tag 'main' %> 
+</head>
+<body>
 
-<h1>Students</h1>
+  <p style="color: green"><%= notice %></p>
+<div class="main-container">
 
-<div id="students">
-  <% @students.each do |student| %>
-    <%= render student %>
-    <p>
-      <%= link_to "Show this student", student %>
-    </p>
-  <% end %>
+  <div class="main-header">
+    <%= image_tag("adnu-seal.png") %>
+  </div>
+  
+  <h1>List of Students</h1>
+
+  <div id="subjects">
+    <table>
+      <thead >
+        <th>Name</th>
+        <th>Year Level</th>
+        <th>Email Address</th>
+        <th>Number of Units</th>
+        <th>Total Assessment</th>
+      </thead>
+      <tbody>
+        <% @students.each do |student| %>
+          <tr>
+            <td><%= link_to student.name, student %></td>
+            <td><%= student.year_level %></td>
+            <td><%= student.email_address %></td>
+            <td><%= student.number_of_units%></td>
+            <td><%= student.total_assessment%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <%= link_to "New Student", new_student_path, class: "buttons" %>
 </div>
 
-<%= link_to "New student", new_student_path %>
+</body>
+</html>
+  
